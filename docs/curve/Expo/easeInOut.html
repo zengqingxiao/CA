@@ -1,0 +1,172 @@
+Circ<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ax {
+      fill: none;
+      stroke: var(--brand-color);
+      stroke-width: 1px;
+      stroke-linecap: round;
+      overflow: visible;
+      display: block;
+    }
+
+    .aw {
+      position: relative;
+      margin: 30px 0;
+      width: 20%;
+      min-width: 100px;
+      color: #cacaca;
+      border-left: 1px solid #cacaca;
+      border-bottom: 1px solid #cacaca;
+    }
+
+    .aw::before {
+      content: "Y";
+      position: absolute;
+      top: 0;
+      left: 5px;
+    }
+
+    .aw::after {
+      content: "X";
+      position: absolute;
+      /* top: 0; */
+      bottom: 5px;
+      right: 0;
+    }
+
+    .al {
+      position: absolute;
+      /* top: 100%; 目前在最下 */
+      top: 100%;
+      right: -17px;
+      opacity: 0;
+      will-change: top;
+      transition: top 0s, opacity 0s;
+      transition-delay: 0s, 0s;
+      transform: translateY(-5px);
+    }
+
+    .al::after {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 0 50% 50% 50%;
+      background: var(--brand-color);
+      transform: rotate(-45deg);
+    }
+
+    .aw:hover .a2 {
+      opacity: 1;
+      top: 1%;
+      transition: top 1s, opacity 0.2s;
+      transition-delay: 0.2s, 0s
+    }
+
+    .container {
+      margin-top: 50px;
+      border-bottom: 1px solid #cacaca;
+      /* border: 1px solid red; */
+      width: 300px;
+      padding-top: 5px;
+    }
+
+    .label::after {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 0 50% 50% 50%;
+      background: var(--brand-color);
+      transform: rotate(-125deg);
+    }
+
+
+.language-css {
+  color: #9a6e3a;
+  background: hsla(0, 0%, 100%, .5);
+}
+  </style>
+</head>
+
+<body>
+  <h2>easeInOutExpo</h2>
+
+  <h3>运动曲线</h3>
+
+  <div class="aw">
+    <svg class="ax" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 85"><path d="M1 84C108.75 85 16.25 0 124 1"></path></svg>
+    <div class="al a2" style="transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);"></div>
+  </div>
+
+  <h2>封装easeInOutExpo</h2>
+
+  <div class="container">
+    <div class="label"></div>
+  </div>
+
+  <pre><code class="language-css"
+    >Math.animation(0, 300, 1000, 'Expo.easeInOut', callback)</code
+  ></pre>
+
+
+  <h2>CSS</h2>
+  <p>在CSS中，过渡和动画属性允许你指定一个简化函数。</p>  
+
+  <pre><code class="language-css"
+    >.block {
+      transition: transform 0.6s cubic-bezier(0.87, 0, 0.13, 1);
+    }</code
+  ></pre>
+  <pre><code class="language-css"
+    >.block {
+      transition: transform 0.6s easeInOutExpo;
+    }</code
+  ></pre>
+
+  <h2>JS</h2>
+  <p>参数x为当前时间占比</p>
+  <pre><code class="language-css"
+    >function easeInOutExpo(x: number): number {
+      return x === 0
+        ? 0
+        : x === 1
+        ? 1
+        : x < 0.5 ? pow(2, 20 * x - 10) / 2
+        : (2 - pow(2, -20 * x + 10)) / 2;
+      }</code
+  ></pre>
+  <script>
+    let container = document.querySelector('.container')
+    let label = document.querySelector('.label')
+    let cancelID
+    let off
+    
+    container.addEventListener('mouseenter', function (e) {
+      if(off) return
+      e.stopPropagation()
+      label.style.transform = "translateX(0px)"
+      let setTransfrom = function (val, end = false) {
+        off = true
+        if (end) {
+          off = false
+          cancelAnimationFrame(cancelID)
+          return
+        } 
+        label.style.transform = "translateX(" + val + "px)";
+      }
+      cancelID = Math.animation(0, 300, 1000, 'Expo.easeInOut', setTransfrom)
+    },true)
+
+  </script>
+
+</body>
+
+</html>

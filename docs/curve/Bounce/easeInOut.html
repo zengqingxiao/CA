@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ax {
+      fill: none;
+      stroke: var(--brand-color);
+      stroke-width: 1px;
+      stroke-linecap: round;
+      overflow: visible;
+      display: block;
+    }
+
+    .aw {
+      position: relative;
+      margin: 30px 0;
+      width: 20%;
+      min-width: 100px;
+      color: #cacaca;
+      border-left: 1px solid #cacaca;
+      border-bottom: 1px solid #cacaca;
+    }
+
+    .aw::before {
+      content: "Y";
+      position: absolute;
+      top: 0;
+      left: 5px;
+    }
+
+    .aw::after {
+      content: "X";
+      position: absolute;
+      /* top: 0; */
+      bottom: 5px;
+      right: 0;
+    }
+
+    .al {
+      position: absolute;
+      /* top: 100%; 目前在最下 */
+      /* top: 100%; */
+      right: -17px;
+      opacity: 0;
+      will-change: bottom;
+      transition: opacity 0s;
+      /* transition-delay: 0s, 0s; */
+      transform: translateY(-5px);
+      
+    }
+
+    .al::after {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 0 50% 50% 50%;
+      background: var(--brand-color);
+      transform: rotate(-45deg);
+    }
+
+    .aw:hover .a2 {
+      opacity: 1;
+      /* top: 1%; */
+      transition: opacity 0.2s;
+      animation: undefined-easeInOutBounce 1s 1 forwards ;
+    }
+
+    .container {
+      margin-top: 50px;
+      border-bottom: 1px solid #cacaca;
+      /* border: 1px solid red; */
+      width: 300px;
+      padding-top: 5px;
+    }
+
+    .label::after {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 0 50% 50% 50%;
+      background: var(--brand-color);
+      transform: rotate(-125deg);
+    }
+
+
+.language-css {
+  color: #9a6e3a;
+  background: hsla(0, 0%, 100%, .5);
+}
+@keyframes undefined-easeInOutBounce {
+	0% {
+		bottom: 0%;
+	}
+
+	2% {
+		bottom: 0.77%;
+	}
+
+	4% {
+		bottom: 0.33%;
+	}
+
+	10% {
+		bottom: 3%;
+	}
+
+	14% {
+		bottom: 0.98%;
+	}
+
+	22% {
+		bottom: 12.42%;
+	}
+
+	32% {
+		bottom: 1%;
+	}
+
+	42% {
+		bottom: 40.32%;
+	}
+
+	50% {
+		bottom: 50%;
+	}
+
+	58% {
+		bottom: 59.68%;
+	}
+
+	68% {
+		bottom: 99.01%;
+	}
+
+	78% {
+		bottom: 87.58%;
+	}
+
+	86% {
+		bottom: 99.02%;
+	}
+
+	90% {
+		bottom: 97%;
+	}
+
+	96% {
+		bottom: 99.67%;
+	}
+
+	98% {
+		bottom: 99.23%;
+	}
+
+	100% {
+		bottom: 100%;
+	}
+
+}
+  </style>
+</head>
+
+<body>
+  <h2>easeInOutBounce</h2>
+
+  <h3>运动曲线</h3>
+
+  <div class="aw">
+    <svg class="ax" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 85"><path d="M1 84l.24-.45 1.24-.2 1.24.06 1.24.31 1.24-.22 1.24-.91 1.24-.66 1.24-.4 1.24-.15 1.24.1 1.24.36 1.24.61 1.24.87 1.24-.14 1.24-2.09 1.24-1.84 1.24-1.58 1.24-1.33 1.24-1.07 1.24-.83 1.24-.56 1.24-.31 1.24-.06 1.24.2 1.24.45 1.24.7 1.24.96 1.24 1.21 1.24 1.47 1.24 1.72 1.24 1.98 1.24.96 1.24-4.44 1.24-4.2 1.24-3.93 1.24-3.69 1.24-3.43 1.24-3.17 1.24-2.93 1.24-2.67 1.24-2.41 1.24-2.16 1.24-1.9 1.24-1.66 1.24-1.39 1.24-1.15 1.24-.89 1.24-.63 1.24-.38L62 42l1.24-.13 1.24-.38 1.24-.63 1.24-.89 1.24-1.15 1.24-1.39 1.24-1.66 1.24-1.9 1.24-2.16 1.24-2.42 1.24-2.66 1.24-2.93 1.24-3.17 1.24-3.43 1.24-3.69 1.24-3.93 1.24-4.2L84.32.84l1.24.96 1.24 1.98 1.24 1.72 1.24 1.47 1.24 1.21 1.24.96 1.24.7 1.24.45 1.24.2 1.24-.06 1.24-.31 1.24-.57 1.24-.82 1.24-1.07 1.24-1.33 1.24-1.58 1.24-1.84 1.24-2.09 1.24-.14 1.24.87 1.24.61 1.24.36 1.24.1 1.24-.15 1.24-.4 1.24-.66L117.8.5l1.24-.22 1.24.31 1.24.06 1.24-.2"></path></svg>
+    <div class="al a2" style="transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+  </div>
+
+  <h2>封装easeInOutBounce</h2>
+
+  <div class="container">
+    <div class="label"></div>
+  </div>
+
+  <pre><code class="language-css"
+    >Math.animation(0, 300, 1000, 'Bounce.easeInOut', callback)</code
+  ></pre>
+
+
+  <h2>CSS</h2>
+  <p>在CSS中，过渡和动画属性允许你指定一个简化函数。</p>  
+
+  <p>size</p>
+  <pre><code class="language-css"
+    >@keyframes scale-easeInOutBounce {
+      0% {
+        transform: scale(1);
+      }
+    
+      2% {
+        transform: scale(0.99);
+      }
+    
+      4% {
+        transform: scale(1);
+      }
+    
+      10% {
+        transform: scale(0.97);
+      }
+    
+      14% {
+        transform: scale(0.99);
+      }
+    
+      22% {
+        transform: scale(0.88);
+      }
+    
+      32% {
+        transform: scale(0.99);
+      }
+    
+      42% {
+        transform: scale(0.6);
+      }
+    
+      50% {
+        transform: scale(0.5);
+      }
+    
+      58% {
+        transform: scale(0.4);
+      }
+    
+      68% {
+        transform: scale(0.01);
+      }
+    
+      78% {
+        transform: scale(0.12);
+      }
+    
+      86% {
+        transform: scale(0.01);
+      }
+    
+      90% {
+        transform: scale(0.03);
+      }
+    
+      96% {
+        transform: scale(0);
+      }
+    
+      98% {
+        transform: scale(0.01);
+      }
+    
+      100% {
+        transform: scale(0);
+      }
+    
+    }</code
+  ></pre>
+
+  <p>position</p>
+  <pre><code class="language-css"
+    >@keyframes undefined-easeInOutBounce {
+	0% {
+		transform: translateX(0%);
+	}
+
+	2% {
+		transform: translateX(-0.77%);
+	}
+
+	4% {
+		transform: translateX(-0.33%);
+	}
+
+	10% {
+		transform: translateX(-3%);
+	}
+
+	14% {
+		transform: translateX(-0.98%);
+	}
+
+	22% {
+		transform: translateX(-12.42%);
+	}
+
+	32% {
+		transform: translateX(-1%);
+	}
+
+	42% {
+		transform: translateX(-40.32%);
+	}
+
+	50% {
+		transform: translateX(-50%);
+	}
+
+	58% {
+		transform: translateX(-59.68%);
+	}
+
+	68% {
+		transform: translateX(-99.01%);
+	}
+
+	78% {
+		transform: translateX(-87.58%);
+	}
+
+	86% {
+		transform: translateX(-99.02%);
+	}
+
+	90% {
+		transform: translateX(-97%);
+	}
+
+	96% {
+		transform: translateX(-99.67%);
+	}
+
+	98% {
+		transform: translateX(-99.23%);
+	}
+
+	100% {
+		transform: translateX(-100%);
+	}
+
+}</code
+  ></pre>
+
+  <h2>JS</h2>
+  <p>参数x为当前时间占比</p>
+  <pre><code class="language-css"
+    >function easeInOutBounce(x: number): number {
+      return x < 0.5
+        ? (1 - easeOutBounce(1 - 2 * x)) / 2
+        : (1 + easeOutBounce(2 * x - 1)) / 2;
+      }</code
+  ></pre>
+  <script>
+    let container = document.querySelector('.container')
+    let label = document.querySelector('.label')
+    let cancelID
+    let off
+    
+    container.addEventListener('mouseenter', function (e) {
+      if(off) return
+      e.stopPropagation()
+      label.style.transform = "translateX(0px)"
+      let setTransfrom = function (val, end = false) {
+        off = true
+        if (end) {
+          off = false
+          cancelAnimationFrame(cancelID)
+          return
+        } 
+        label.style.transform = "translateX(" + val + "px)";
+      }
+      cancelID = Math.animation(0, 300, 1000, 'Bounce.easeInOut', setTransfrom)
+    },true)
+
+  </script>
+
+</body>
+
+</html>
