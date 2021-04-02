@@ -3,6 +3,18 @@
 * [easeOutSine](curve/Sine/easeOut.html)
 * [easeInOutSine](curve/Sine/easeInOut.html)
 
+
+* Elastic
+* [easeInQuad](curve/Elastic/easeIn.html)
+* [easeOutQuad](curve/Elastic/easeOut.html)
+* [easeInOutQuad](curve/Elastic/easeInOut.html)
+
+* Bounce
+* [easeInQuad](curve/Bounce/easeIn.html)
+* [easeOutQuad](curve/Bounce/easeOut.html)
+* [easeInOutQuad](curve/Bounce/easeInOut.html)
+
+
 * Quad
 * [easeInQuad](curve/Quad/easeIn.html)
 * [easeOutQuad](curve/Quad/easeOut.html)
@@ -38,12 +50,3 @@
 * [easeOutQuad](curve/Back/easeOut.html)
 * [easeInOutQuad](curve/Back/easeInOut.html)
 
-* Elastic
-* [easeInQuad](curve/Elastic/easeIn.html)
-* [easeOutQuad](curve/Elastic/easeOut.html)
-* [easeInOutQuad](curve/Elastic/easeInOut.html)
-
-* Bounce
-* [easeInQuad](curve/Bounce/easeIn.html)
-* [easeOutQuad](curve/Bounce/easeOut.html)
-* [easeInOutQuad](curve/Bounce/easeInOut.html)
